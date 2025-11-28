@@ -58,7 +58,37 @@ def rearrange_elem_by_sign_version_2(arr: List[int]) -> List[int]:
     return result
 
 
+def rearrange_elem_version_2(arr: List[int]) -> List[int]:
+    result = []
+    positive_arr = []
+    negative_arr = []
+    for elem in arr:
+        if elem > 0:
+            positive_arr.append(elem)
+        else:
+            negative_arr.append(elem)
+    print(positive_arr)
+    print(negative_arr)
+
+    i = 0
+    while i < len(positive_arr) and i < len(negative_arr):
+        result.append(positive_arr[i])
+        result.append(negative_arr[i])
+        i += 1
+
+    while i < len(positive_arr):
+        result.append(positive_arr[i])
+        i += 1
+
+    while i < len(negative_arr):
+        result.append(negative_arr[i])
+        i += 1
+
+    return result
+
+
 my_array = [-1, 2, 3, 4, -3, 1]
 # print(rearrange_elem_by_sign(arr=my_array))
 # print(rearrange_elem_by_sign_optimal(arr=my_array))
-print(rearrange_elem_by_sign_version_2(arr=my_array))
+# print(rearrange_elem_by_sign_version_2(arr=my_array))
+print(rearrange_elem_version_2(arr=my_array))
