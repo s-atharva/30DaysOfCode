@@ -3,7 +3,7 @@ from typing import List
 
 def find_longest_consecutive_seq(arr: List[int]) -> int:
     longest = 0
-
+    pass
     for num in arr:
         current = num
         length = 1
