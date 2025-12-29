@@ -34,5 +34,6 @@ def find_upper_bound(nums: List[int], target):
 
 
 arr = [1, 1, 1, 2, 3, 3, 5, 6, 7, 7, 7, 9, 12, 12, 13]
-# print(find_lower_bound(nums=arr, target=12))
-print(find_upper_bound(nums=arr, target=7))
+lower = find_lower_bound(nums=arr, target=7)
+higher = find_upper_bound(nums=arr, target=7)
+print(higher - lower + 1)
