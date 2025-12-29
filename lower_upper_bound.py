@@ -2,19 +2,37 @@ from typing import List
 
 
 def find_lower_bound(nums: List[int], target):
-    n = len(nums)
+    start = 0
+    end = len(nums) - 1
     lower_bound = -1
-    low = 0
-    high = n - 1
-    while low <= high:
-        mid = (low + high) // 2
-        if nums[mid] >= target:
+    while start <= end:
+        mid = (start + end) // 2
+        if target == arr[mid]:
             lower_bound = mid
-            high = mid - 1
+            end = mid - 1
+        elif target <= arr[mid]:
+            end = mid - 1
         else:
-            low = mid + 1
+            start = mid + 1
     return lower_bound
 
 
+def find_upper_bound(nums: List[int], target):
+    start = 0
+    end = len(nums) - 1
+    upper_bound = -1
+    while start <= end:
+        mid = (start + end) // 2
+        if target == nums[mid]:
+            upper_bound = mid
+            start = mid + 1
+        elif target <= nums[mid]:
+            end = mid - 1
+        else:
+            start = mid + 1
+    return upper_bound
+
+
 arr = [1, 1, 1, 2, 3, 3, 5, 6, 7, 7, 7, 9, 12, 12, 13]
-print(find_lower_bound(nums=arr, target=9))
+# print(find_lower_bound(nums=arr, target=12))
+print(find_upper_bound(nums=arr, target=7))
