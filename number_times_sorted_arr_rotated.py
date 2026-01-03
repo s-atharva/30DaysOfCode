@@ -13,7 +13,7 @@ def find_sorted_times(arr: List[int]) -> int:
         mid = (start + end) // 2
         prev = (mid - 1 + n) % n
         nxt = (mid + 1) % n
-        if prev > arr[mid] and nxt > arr[mid]:
+        if arr[prev] > arr[mid] and arr[nxt] > arr[mid]:
             return mid
         if arr[start] < arr[mid]:
             start = mid + 1
