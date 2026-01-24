@@ -53,7 +53,7 @@ def decreasing_binary_search(arr: List[int], start, end, element) -> int:
     return -1
 
 
-my_arr = [1, 3, 8, 12, 4, 2]
+my_arr = [1, 12, 8, 12, 4, 2]
 peak_element = peak_elem(arr=my_arr)
 find_elem = increasing_binary_search(arr=my_arr, start=0, end=peak_element + 1, element=4)
 
