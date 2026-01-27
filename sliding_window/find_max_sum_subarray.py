@@ -12,5 +12,22 @@ def find_max_sum(arr: List[int], k) -> int:
     return max_sum
 
 
+def find_max_sum_bs(arr: List[int], k) -> int:
+    total = 0
+    max_total = 0
+    i, j = 0, 0
+    while j < len(arr):
+        total = total + arr[j]
+        if j - i + 1 < k:
+            j += 1
+        elif j - i + 1 == k:
+            max_total = max(total, max_total)
+            total = total - arr[i]
+            i += 1
+            j += 1
+    return max_total
+
+
 my_arr = [2, 3, 5, 2, 9, 7, 1]
 print(find_max_sum(arr=my_arr, k=3))
+print(find_max_sum_bs(arr=my_arr, k=3))
