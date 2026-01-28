@@ -16,6 +16,29 @@ def find_first_negative_number(arr: List[int], k: int) -> List[int]:
     return negative_list
 
 
+def find_first_negative_number_sliding_window(arr, k):
+    i, j = 0, 0
+    n = len(arr)
+    first_negative = list()
+    temp_nagative = list()
+    while j < n:
+        if arr[j] < 0:
+            temp_nagative.append(arr[j])
+        if j - i + 1 < k:
+            j += 1
+        elif j - i + 1 == k:
+            if len(temp_nagative) == 0:
+                first_negative.append(0)
+            else:
+                first_negative.append(temp_nagative[0])
+                if arr[i] < 0:
+                    temp_nagative.pop(0)
+            i += 1
+            j += 1
+    return first_negative
+
+
 my_arr = [12, -1, -7, 8, -15, 30, 16, 28]
 k = 3
 print(find_first_negative_number(arr=my_arr, k=k))
+print(find_first_negative_number_sliding_window(arr=my_arr, k=k))
