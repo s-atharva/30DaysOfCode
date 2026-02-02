@@ -2,22 +2,22 @@ def find_longest_substring(s):
     i = 0
     j = 0
     maxi = 0
-    my_dict = {}
+    frequency = {}
     while j < len(s):
-        if s[j] in my_dict:
-            my_dict[s[j]] += 1
+        if s[j] in frequency:
+            frequency[s[j]] += 1
         else:
-            my_dict[s[j]] = 1
+            frequency[s[j]] = 1
 
-        if len(my_dict) == j - i + 1:
+        if len(frequency) == j - i + 1:
             maxi = max(maxi, j - i + 1)
             j += 1
 
         else:
-            while j - i + 1 > len(my_dict):
-                my_dict[s[i]] -= 1
-                if my_dict[s[i]] == 0:
-                    del my_dict[s[i]]
+            while len(frequency) < j - i + 1:
+                frequency[s[i]] -= 1
+                if frequency[s[i]] == 0:
+                    del frequency[s[i]]
                 i += 1
             j += 1
 

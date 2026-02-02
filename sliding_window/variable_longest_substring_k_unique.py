@@ -1,11 +1,8 @@
-from typing import Dict
-
-
 def find_longest_substring(s, k):
     i = 0
     j = 0
-    frequency: Dict[str, int] = {}
-    maxi = 0
+    frequency = {}
+    maxi = float('-inf')
 
     while j < len(s):
         if s[j] in frequency:
