@@ -1,26 +1,30 @@
+from typing import Dict
+
+
 def find_longest_substring(s, k):
     i = 0
     j = 0
-    map = {}
+    frequency: Dict[str, int] = {}
     maxi = 0
-    while j < len(s):
-        if s[j] in map:
-            map[s[j]] += 1
-        else:
-            map[s[j]] = 1
 
-        if len(map) < k:
+    while j < len(s):
+        if s[j] in frequency:
+            frequency[s[j]] += 1
+        else:
+            frequency[s[j]] = 1
+
+        if len(frequency) < k:
             j += 1
 
-        elif len(map) == k:
+        elif len(frequency) == k:
             maxi = max(maxi, j - i + 1)
             j += 1
 
         else:
-            while len(map) > k:
-                map[s[i]] -= 1
-                if map[s[i]] == 0:
-                    del map[s[i]]
+            while len(frequency) > k:
+                frequency[s[i]] -= 1
+                if frequency[s[i]] == 0:
+                    del frequency[s[i]]
                 i += 1
             j += 1
     return maxi
