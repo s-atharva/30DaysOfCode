@@ -61,6 +61,26 @@ class LinkedList:
             prev = temp
             temp = temp.next
 
+    def find_middle(self):
+        temp = self.head
+        count = 0
+        while temp is not None:
+            count += 1
+            temp = temp.next
+
+        temp = self.head
+        for i in range(0, count // 2):
+            temp = temp.next
+        print(f'Middle element is {temp.data}')
+
+    def find_middle_slow_fast(self):
+        slow = self.head
+        fast = self.head
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+        print(f'Middle element using slow and fast pointers : {slow.data}')
+
 
 ll = LinkedList()
 ll.append(10)
@@ -68,6 +88,9 @@ ll.append(20)
 ll.append(30)
 ll.append(40)
 ll.append(50)
-ll.insert_at_index(5, 3)
-ll.delete_node(40)
+ll.append(60)
+# ll.insert_at_index(5, 3)
+# ll.delete_node(40)
+# ll.find_middle()
+ll.find_middle_slow_fast()
 ll.display()
