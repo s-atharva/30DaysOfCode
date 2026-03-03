@@ -55,16 +55,16 @@ class LinkedList:
     def detect_cycle_starting_point(self):
         slow = self.head
         fast = self.head
-        while fast is not None and fast.next is not None:
+        while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
+
             if slow == fast:
                 slow = self.head
                 while slow != fast:
                     slow = slow.next
                     fast = fast.next
                 return slow.data
-        return None
 
 
 ll = LinkedList()
