@@ -5,11 +5,11 @@ class Node:
         self.prev = None
 
 
-class DLL:
+class DoublyLinkedList:
     def __init__(self):
         self.head = None
 
-    def append(self, data):
+    def append_node(self, data):
         new_node = Node(data)
         if self.head is None:
             self.head = new_node
@@ -21,9 +21,6 @@ class DLL:
         new_node.prev = temp
 
     def display(self):
-        if self.head is None:
-            return f'No node is present in Linked List'
-
         temp = self.head
         while temp:
             print(temp.data, end=' ')
@@ -31,25 +28,27 @@ class DLL:
         print('None')
 
     def reverse(self):
-        if self.head is None or self.head.next is None:
+        if self.head is None:
             return self.head
-        temp = self.head
+        current = self.head
         prev = None
-        while temp is not None:
-            front = temp.next
-            temp.next = prev
-            temp.prev = front
-            prev = temp
-            temp = front
-        return prev
+        while current:
+            front = current.next
+            current.next = prev
+            current.prev = front
+            prev = current
+            current = front
+
+        self.head = prev
 
 
-dll = DLL()
-dll.append(10)
-dll.append(20)
-dll.append(30)
-dll.append(40)
-dll.append(50)
+dll = DoublyLinkedList()
+dll.append_node(10)
+dll.append_node(20)
+dll.append_node(30)
+dll.append_node(40)
+dll.append_node(50)
+dll.append_node(60)
 dll.display()
-dll.head = dll.reverse()
+dll.reverse()
 dll.display()
