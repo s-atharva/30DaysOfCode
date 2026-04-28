@@ -25,8 +25,9 @@ def sort_colors(nums):
 
     return nums
 
-def sort_colors_two_pointers(nums):
 
+def sort_colors_two_pointers(nums):
+    pass
 
 
 my_array = [2, 0, 2, 1, 1, 0]
