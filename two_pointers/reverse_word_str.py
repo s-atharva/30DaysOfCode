@@ -19,4 +19,7 @@ def reverse_word_str(s):
 
 
 my_string = ' the  sky is blue'
-reverse_word_str(s=my_string)
+new_str = list(my_string)
+# reverse_word_str(s=my_string)
+# print(reverse(new_str))
+# print(new_str)
