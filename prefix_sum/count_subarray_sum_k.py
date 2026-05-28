@@ -6,7 +6,6 @@ def count_subarray(arr, k):
 
     for num in arr:
         prefix_sum += num
-
         need = prefix_sum - k
 
         if need in frequency:
@@ -16,7 +15,6 @@ def count_subarray(arr, k):
             frequency[prefix_sum] = 1
         else:
             frequency[prefix_sum] += 1
-
     return count
 
 
