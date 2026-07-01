@@ -1,10 +1,17 @@
-def print_1_to_n(n):
+def print_1_n(n):
     if n == 0:
-        return
-
-    print_1_to_n(n - 1)
-
+        return None
+    print_1_n(n - 1)
     print(n)
 
 
-print_1_to_n(3)
+def print_n_1(n):
+    if n == 0:
+        return None
+    print(n)
+    print_n_1(n - 1)
+
+
+num = 5
+# print_1_n(n=num)
+print_n_1(5)
