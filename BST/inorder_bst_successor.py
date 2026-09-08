@@ -20,6 +20,7 @@ class Solution:
         # Process
         if self.previous == p and self.successor is None:
             self.successor = node
+            return
 
         self.previous = node
 

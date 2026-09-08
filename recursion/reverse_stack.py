@@ -1,8 +1,8 @@
-# def reverse_stack_loop(arr):
-#     reversed_arr = []
-#     while len(arr) > 0:
-#         reversed_arr.append(arr.pop())
-#     return reversed_arr
+def reverse_stack_loop(arr):
+    reversed_arr = []
+    while len(arr) > 0:
+        reversed_arr.append(arr.pop())
+    return reversed_arr
 
 
 def reverse_stack(arr, reversed_arr):
