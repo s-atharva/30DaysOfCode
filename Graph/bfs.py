@@ -4,40 +4,43 @@ from collections import deque
 class Graph:
     def __init__(self, vertices):
         self.vertices = vertices
-        self.adj = [[] for _ in range(vertices)]
+        self.adj_list = [[] for _ in range(vertices)]
 
     def add_edge(self, x, y):
-        self.adj[x].append(y)
-        self.adj[y].append(x)
+        self.adj_list[x].append(y)
+        self.adj_list[y].append(x)
+        # [
+        #     [1, 2],
+        #     [0, 3],
+        #     [0, 4],
+        #     [1, 4],
+        #     [2, 3]
+        # ]
 
-    def print_graph(self):
-        for i in range(self.vertices):
-            print(f'{i} -> {self.adj[i]}')
+    def display(self):
+        print(self.adj_list)
 
     def bfs(self, start):
-        visited = [False] * self.vertices
         queue = deque()
+        visited = set()
 
-        visited[start] = True
         queue.append(start)
+        visited.add(start)
 
+        # as long as there is something in queue. Keep Searching
         while queue:
             node = queue.popleft()
-            print(node, end=" ")
-            for neighbour in self.adj[node]:
-                if not visited[neighbour]:
-                    visited[neighbour] = True
-                    queue.append(neighbour)
+            print(node)
+            for neighbours in self.adj_list[node]:
+                if neighbours not in visited:
+                    visited.add(neighbours)
+                    queue.append(neighbours)
 
 
-g = Graph(6)
-
+g = Graph(5)
 g.add_edge(0, 1)
 g.add_edge(0, 2)
 g.add_edge(1, 3)
-g.add_edge(1, 4)
-g.add_edge(2, 5)
-
-g.print_graph()
-
+g.add_edge(2, 4)
+g.add_edge(3, 4)
 g.bfs(0)
