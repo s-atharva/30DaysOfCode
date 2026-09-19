@@ -37,6 +37,26 @@ class Graph:
 
         return False
 
+    def detect_cycle_dfs(self):
+        visited = [False] * self.vertices
+
+        def dfs(curr, parent, visited):
+            visited[curr] = True
+            for neighbour in self.adj[curr]:
+                if not visited[neighbour]:
+                    if dfs(neighbour, curr, visited):
+                        return True
+                elif visited[neighbour] and neighbour != parent:
+                    return True
+            return False
+
+        for i in range(self.vertices):
+            if visited[i]:
+                continue
+            if dfs(i, -1, visited):
+                return True
+        return False
+
 
 graph = Graph(5)
 graph.add_edge(0, 1)
@@ -46,4 +66,4 @@ graph.add_edge(3, 4)
 graph.add_edge(4, 0)
 
 graph.display_graph()
-print(graph.detect_cycle_bfs())
+print(graph.detect_cycle_dfs())
