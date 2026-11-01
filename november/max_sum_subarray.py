@@ -1,10 +1,19 @@
-my_arr = [2, 3, 5, 2, 9, 7, 1]
-k = 3
-max_total = 0
-for i in range(len(my_arr) - k + 1):
+def max_subarray_sum_k(arr, k):
+    i, j = 0, 0
     total = 0
-    for j in range(i, i + k):
-        total += my_arr[j]
-        max_total = max(max_total, total)
+    maxi = 0
+    while j < len(arr):
+        total += arr[j]
+        if j - i + 1 < k:
+            j += 1
+        elif j - i + 1 == k:
+            maxi = max(maxi, total)
+            total -= arr[i]
+            i += 1
+            j += 1
+    return maxi
 
-print(max_total)
+
+arr = [2, 5, 1, 8, 2, 9, 1]
+k = 3
+print(max_subarray_sum_k(arr, k))
